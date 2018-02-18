@@ -23,6 +23,7 @@
     "ajv": "^6.1.1",
     "autoprefixer": "^8.0.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
     "babel-jest": "22.2.2",
     "babel-loader": "^7.1.2",
     "babel-plugin-react-transform": "^3.0.0",

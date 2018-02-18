@@ -10,9 +10,9 @@ export default class HelloWorld extends Component {
     const { onPress, color } = this.props;
     const style = StyleSheet.create({
       helloWorld: {
-        color: color,
+        color,
         textAlign: 'center',
-      }
+      },
     });
     return (
       <View>
@@ -25,4 +25,4 @@ export default class HelloWorld extends Component {
 HelloWorld.propTypes = {
   onPress: PropTypes.func.isRequired,
   color: PropTypes.string.isRequired,
-}
+};
