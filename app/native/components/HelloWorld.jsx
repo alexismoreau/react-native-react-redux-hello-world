@@ -1,11 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
   StyleSheet,
 } from 'react-native';
 
-export default class HelloWorld extends Component {
+export default class HelloWorld extends React.Component {
   render() {
     const { onPress, color } = this.props;
     const style = StyleSheet.create({
