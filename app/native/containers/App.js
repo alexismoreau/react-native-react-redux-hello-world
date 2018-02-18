@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { appStyle } from '../styles/styles';
@@ -7,7 +8,7 @@ import HelloWorld from '../components/HelloWorld';
 import { toggleColor } from '../../actions/actions';
 
 /** The app entry point */
-class ReactNativeWebHelloWorld extends Component {
+class ReactNativeWebHelloWorld extends React.Component {
   render() {
     // injected by connect call
     const { dispatch, color, data } = this.props;

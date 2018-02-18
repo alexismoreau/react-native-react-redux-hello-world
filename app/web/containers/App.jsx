@@ -1,11 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import HelloWorld from '../components/HelloWorld';
 import { toggleColor } from '../../actions/actions';
 
 /** The app entry point */
-class OuiTeamWebApp extends Component {
+class OuiTeamWebApp extends React.Component {
   render() {
     // injected by connect call
     const { dispatch, color, data } = this.props;

@@ -1,9 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import ReactNativeWebHelloWorld from './App';
 import DevTools from './DevTools';
 
-export default class Root extends Component {
+export default class Root extends React.Component {
   render() {
     return (
       <Provider store={this.props.store}>
