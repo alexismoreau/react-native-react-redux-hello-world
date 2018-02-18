@@ -15,27 +15,27 @@ const initialState = {
 
 export default function reduce(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE_COLOR:
-      return assign({}, state, {
-        color: state.color === 'red' ? 'blue' : 'red',
-      });
+  case TOGGLE_COLOR:
+    return assign({}, state, {
+      color: state.color === 'red' ? 'blue' : 'red',
+    });
 
-    case EXAMPLE_REQUEST_START:
-      return assign({}, state, {
-        data: assign({}, state.data, {
-          loading: true,
-        }),
-      });
+  case EXAMPLE_REQUEST_START:
+    return assign({}, state, {
+      data: assign({}, state.data, {
+        loading: true,
+      }),
+    });
 
-    case EXAMPLE_REQUEST_DATA:
-      return assign({}, state, {
-        data: assign({}, state.data, {
-          loading: false,
-          objects: action.data,
-        }),
-      });
+  case EXAMPLE_REQUEST_DATA:
+    return assign({}, state, {
+      data: assign({}, state.data, {
+        loading: false,
+        objects: action.data,
+      }),
+    });
 
-    default:
-      return state;
+  default:
+    return state;
   }
 }
