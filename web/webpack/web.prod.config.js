@@ -12,16 +12,32 @@ module.exports = {
   },
   module: {
     loaders: [
-      // take all less files, compile them, and bundle them in with our js bundle
       {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      }, {
         test: /\.less$/,
-        loader: 'style!css!autoprefixer?browsers=last 2 version!less',
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       }, {
         test: /\.json$/,
-        loader: 'json',
-      },
-      {
+        loader: 'json-loader',
+      }, {
         test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react'],
+          plugins: [['react-transform', {
+            transforms: [{
+              transform: 'react-transform-hmr',
+              imports: ['react'],
+              // this is important for Webpack HMR:
+              locals: ['module'],
+            }],
+          }]],
+        },
+      }, {
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -29,6 +45,9 @@ module.exports = {
         },
       },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -39,8 +58,7 @@ module.exports = {
       },
     }),
     // optimizations
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,

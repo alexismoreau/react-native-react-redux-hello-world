@@ -15,13 +15,15 @@ module.exports = {
   },
   module: {
     loaders: [
-      // take all less files, compile them, and bundle them in with our js bundle
       {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      }, {
         test: /\.less$/,
-        loader: 'style!css!autoprefixer?browsers=last 2 version!less',
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       }, {
         test: /\.json$/,
-        loader: 'json',
+        loader: 'json-loader',
       }, {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -37,8 +39,18 @@ module.exports = {
             }],
           }]],
         },
+      }, {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react'],
+        },
       },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -47,8 +59,8 @@ module.exports = {
         PLATFORM_ENV: JSON.stringify('web'),
       },
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
   ],
 };
